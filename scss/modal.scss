@@ -1,0 +1,88 @@
+/* modal | layout */
+.modal {
+	position: fixed;
+	left: 15px;
+	right: 15px;
+	top: 0;
+	bottom: 0;
+	
+	display: -wekbkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	justify-content: center;
+	.overlay {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, .5);
+	}
+	.modal-contents {
+		position: relative;
+		margin: 0 auto;
+		padding: 0 16px;
+		box-sizing: border-box;
+		background-color: #fff;
+		.modal-body {
+			padding: 16px 0;
+		}
+		.modal-footer {
+			display: -webkit-flex;
+			display: flex;
+			justify-content: space-between;
+			padding-bottom: 16px;
+			.btn {
+				flex: 1;
+				margin-left: 8px;
+			}
+			.btn:first-child {				
+				margin-left: 0;
+			}
+		}	
+	}
+	&.type-alert {
+		.modal-contents {
+			.modal-body {
+				> p {
+					padding: 20px 0;
+					font-size: 14px;
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+/* modal | withdraw */
+.modal {
+	.withdraw-modal-top {
+		margin-bottom: 16px;
+		span {
+			display: block;
+			padding: 11px 0 8px;
+			font-size: 20px;
+		}
+		li {
+			position: relative;
+			padding-left: 10px;
+			line-height: 20px;
+			font-size: 14px;
+			&:before {
+				content: '-';
+				position: absolute;
+				left: 0;
+				display: inline-block;
+			}
+		}
+	}
+	
+	.withdraw-modal-bottom {
+		.form-data-table {
+			th {
+				width: 72px;
+			} 
+		}
+	}
+}

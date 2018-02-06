@@ -1,0 +1,62 @@
+/* modal | layout */
+.modal {
+  position: fixed;
+  left: 15px;
+  right: 15px;
+  top: 0;
+  bottom: 0;
+  display: -wekbkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  justify-content: center; }
+  .modal .overlay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); }
+  .modal .modal-contents {
+    position: relative;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+    background-color: #fff; }
+    .modal .modal-contents .modal-body {
+      padding: 16px 0; }
+    .modal .modal-contents .modal-footer {
+      display: -webkit-flex;
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 16px; }
+      .modal .modal-contents .modal-footer .btn {
+        flex: 1;
+        margin-left: 8px; }
+      .modal .modal-contents .modal-footer .btn:first-child {
+        margin-left: 0; }
+  .modal.type-alert .modal-contents .modal-body > p {
+    padding: 20px 0;
+    font-size: 14px;
+    text-align: center; }
+
+/* modal | withdraw */
+.modal .withdraw-modal-top {
+  margin-bottom: 16px; }
+  .modal .withdraw-modal-top span {
+    display: block;
+    padding: 11px 0 8px;
+    font-size: 20px; }
+  .modal .withdraw-modal-top li {
+    position: relative;
+    padding-left: 10px;
+    line-height: 20px;
+    font-size: 14px; }
+    .modal .withdraw-modal-top li:before {
+      content: '-';
+      position: absolute;
+      left: 0;
+      display: inline-block; }
+
+.modal .withdraw-modal-bottom .form-data-table th {
+  width: 72px; }

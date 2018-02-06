@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modal</title>
+    <style>
+        *{margin: 0; padding: 0;} /* reset */
+        .btn {
+            display: inline-block;
+            min-width: 140px;
+            height: 40px;
+            line-height: 40px;
+            outline: none;
+            color: #333;
+            border: 1px solid #d3d3d3;
+            background-color: #fff;
+        }
+        .btn-colored {
+            color: #fff;
+            border: none;
+            background-color: skyblue;
+        }
+        body {
+            margin: 0 auto;
+            max-width: 100%;
+            width: 640px;
+        }
+    </style>
+    <link rel="stylesheet" href="./modal.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"></script>
+    <script src="./modal.js"></script>
+</head>
+<body>
+    <br/>
+    <br/>
+    <button id="btn1" class="btn">경고창 모달(type: alert)</button>
+    <br/>
+    <br/>
+    <button id="btn2" class="btn">모달 callback</button>
+    <script>
+        $(document).ready(function() {
+            $.modal({
+                template: `
+                    <div class="modal-body">
+                        <p>modal!!<br/> with custom css</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-colored btn-close-modal">확인</button>
+                    </div>
+                `,
+                styles: {
+                    width: '400px'
+                }
+            })
+        });
+
+        $('#btn1').on('click', function() {
+            $.modal({
+                type: 'alert',
+                template: `
+                    <div class="modal-body">
+                        <p>경고창</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-colored btn-close-modal">확인</button>
+                    </div>
+                `
+            })
+        });
+        $('#btn2').on('click', function() {
+            $.modal({
+                template: `
+                    <div class="modal-body">
+                        <p>eventObj : callback Obj</p>
+                        <p class="click-item">
+                            click here!!
+                        </p>
+                        <p class="click-item2">
+                            click here!!
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-colored btn-close-modal">확인</button>
+                    </div>
+                `,
+                eventObj: {
+                    click: [
+                        {
+                            target: '.click-item', // css selector,
+                            handler: function() { // func
+                                alert('custom click event 1');
+                            }
+                        },
+                        {
+                            target: '.click-item2', // css selector,
+                            handler: function() { // func
+                                alert('custom click event 2');
+                            }
+                        }
+                    ],
+                    afterOpen: function() {
+                        // after open callback
+                        // modal append completed
+                        alert('modal be appended');
+                    }
+                }
+            })
+        });
+    </script>
+</body>
+</html>

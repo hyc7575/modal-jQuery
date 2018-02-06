@@ -1,0 +1,89 @@
+@mixin mediaPc {
+    @media only screen and (min-width: 1024px) {
+        @content;
+    }
+}
+@mixin mediaMobile {
+    @media only screen and (max-width: 1023px) {
+        @content;
+    }
+}
+
+@mixin retina2x {
+    @media only screen and (-o-min-device-pixel-ratio: 5/4),
+           only screen and (-webkit-min-device-pixel-ratio: 1.25),
+           only screen and (min-device-pixel-ratio: 1.25),
+           only screen and (min-resolution: 1.25dppx) {
+        @content;
+    }
+}
+@mixin retina3x {
+    @media only screen and (-o-min-device-pixel-ratio: 9/4),
+    	   only screen and (-webkit-min-device-pixel-ratio: 2.25),
+    	   only screen and (min-device-pixel-ratio: 2.25),
+    	   only screen and (min-resolution: 2.25dppx) {
+        @content;
+    }
+}
+@mixin retina2xMobile {
+    @media only screen and (max-width: 1023px) and (-o-min-device-pixel-ratio: 5/4),
+    	   only screen and (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 1.25),
+    	   only screen and (max-width: 1023px) and (min-device-pixel-ratio: 1.25),
+    	   only screen and (max-width: 1023px) and (min-resolution: 1.25dppx) {
+        @content;
+    }
+}
+@mixin retina3xMobile {
+    @media only screen and (max-width: 1023px) and (-o-min-device-pixel-ratio: 9/4),
+    	   only screen and (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 2.25),
+    	   only screen and (max-width: 1023px) and (min-device-pixel-ratio: 2.25),
+    	   only screen and (max-width: 1023px) and (min-resolution: 2.25dppx) {
+        @content;
+    }
+}
+
+@mixin placeholder {
+    @include optional-at-root ('::-webkit-input-placeholder') {
+        @content;
+    }
+
+    @include optional-at-root (':-moz-placeholder') {
+        @content;
+    }
+
+    @include optional-at-root ('::-moz-placeholder') {
+        @content;
+    }
+
+    @include optional-at-root (':-ms-input-placeholder') {
+        @content;
+    }
+}
+@mixin ie8 {
+    .ie8 {
+        @content;
+    }
+}
+@mixin ie9 {
+    .ie9 {
+        @content;
+    }
+}
+
+@mixin ios {
+    .ios {
+        @content;
+    }
+}
+
+@mixin android {
+    .android {
+        @content;
+    }
+}
+
+@mixin optional-at-root($sel) {
+     @at-root #{if(not &, $sel, selector-append(&, $sel))}{
+        @content;
+    }
+}
